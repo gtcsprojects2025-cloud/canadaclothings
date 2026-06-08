@@ -198,7 +198,7 @@ console.log("Products in state:", products);
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-10 left-10 text-white">
                   <h3 className="text-4xl font-semibold capitalize">{gender}</h3>
-                  <p className="mt-2 opacity-90 text-black">Explore Collection →</p>
+                  <p className="mt-2 opacity-90 text-white">Explore Collection →</p>
                 </div>
               </Link>
             ))}

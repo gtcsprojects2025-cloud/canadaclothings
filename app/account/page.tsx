@@ -35,18 +35,7 @@ export default function AccountPage() {
     const [loading, setLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
 
-    // const [user, setUser] = useState<UserProfile>({
-    //     name: "Emma Thompson",
-    //     email: "emma.thompson@email.com",
-    //     phone: "+1 (416) 123-4567",
-    //     address: "123 Fashion Street, Toronto, ON M5V 2T6",
-    //     joinDate: "March 2025",
-    //     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    // });
 
-    // const [editForm, setEditForm] = useState<UserProfile>(user);
-
-    // Initialize with empty strings to avoid undefined
   const [user, setUser] = useState<UserProfile>({
     name: "",
     email: "",
@@ -95,12 +84,7 @@ export default function AccountPage() {
 
         fetchData();
     }, []);
-    useEffect(() => {
-        // This effect runs whenever the cart changes, but currently does nothing.
-        // You can add any side effects related to cart updates here if needed.
-        console.log("User orders updated:", orders);
-        console.log("User profile updated:", user);
-    }, []);
+
 
     const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -152,8 +136,8 @@ export default function AccountPage() {
                             <User size={48} className="text-gray-400" />
 
                             <div>
-                                <h2 className="font-semibold text-xl">{user.name}</h2>
-                                <p className="text-sm text-gray-500">{user.email}</p>
+                                <h2 className="font-semibold text-xl text-black">{user.name}</h2>
+                                <p className="text-sm text-gray-500 text-black">{user.email}</p>
                             </div>
                         </div>
 
@@ -167,7 +151,7 @@ export default function AccountPage() {
                                 <button
                                     key={item.tab}
                                     onClick={() => setActiveTab(item.tab as any)}
-                                    className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl text-left transition-all ${activeTab === item.tab ? "bg-black text-white" : "hover:bg-gray-100"
+                                    className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl text-left text-black transition-all ${activeTab === item.tab ? "bg-black text-white" : "hover:bg-gray-100"
                                         }`}
                                 >
                                     <item.icon size={20} />
@@ -193,7 +177,7 @@ export default function AccountPage() {
                                     {!isEditing && (
                                         <button
                                             onClick={() => setIsEditing(true)}
-                                            className="flex items-center gap-2 px-5 py-2 border border-gray-300 rounded-xl hover:bg-gray-50"
+                                            className="flex items-center gap-2 px-5 py-2 border border-gray-300 rounded-xl hover:bg-gray-50 text-black"
                                         >
                                             <Edit size={18} /> Edit Profile
                                         </button>
@@ -203,7 +187,7 @@ export default function AccountPage() {
                                 {isEditing ? (
                                     <div className="space-y-6 max-w-lg">
                                         <div>
-                                            <label className="block text-sm font-medium mb-2">Full Name</label>
+                                            <label className="block text-sm font-medium mb-2 text-black">Full Name</label>
                                             <input
                                                 type="text"
                                                 name="name"
@@ -213,7 +197,7 @@ export default function AccountPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium mb-2">Email Address</label>
+                                            <label className="block text-sm font-medium mb-2 text-black">Email Address</label>
                                             <input
                                                 type="email"
                                                 name="email"
@@ -223,7 +207,7 @@ export default function AccountPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium mb-2">Phone Number</label>
+                                            <label className="block text-sm font-medium mb-2 text-black">Phone Number</label>
                                             <input
                                                 type="tel"
                                                 name="phone"
@@ -233,7 +217,7 @@ export default function AccountPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium mb-2">Address</label>
+                                            <label className="block text-sm font-medium mb-2 text-black">Address</label>
                                             <textarea
                                                 name="address"
                                                 value={editForm.address}
@@ -261,19 +245,19 @@ export default function AccountPage() {
                                 ) : (
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div>
-                                            <label className="text-sm text-gray-500">Full Name</label>
+                                            <label className="text-sm text-gray-800 ">Full Name</label>
                                             <p className="text-lg font-medium mt-1">{user.name}</p>
                                         </div>
                                         <div>
-                                            <label className="text-sm text-gray-500">Email Address</label>
+                                            <label className="text-sm text-gray-800 ">Email Address</label>
                                             <p className="text-lg font-medium mt-1">{user.email}</p>
                                         </div>
                                         <div>
-                                            <label className="text-sm text-gray-500">Phone Number</label>
+                                            <label className="text-sm text-gray-800 ">Phone Number</label>
                                             <p className="text-lg font-medium mt-1">{user.phone}</p>
                                         </div>
                                         <div>
-                                            <label className="text-sm text-gray-500">Member Since</label>
+                                            <label className="text-sm text-gray-800 ">Member Since</label>
                                             <p className="text-lg font-medium mt-1">{user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { 
                                                 month: 'long', 
                                                 year: 'numeric' 
@@ -289,7 +273,7 @@ export default function AccountPage() {
                         ) : activeTab === "orders" ? (
                             // Orders content (already good from previous version)
                             <div>
-                                <h1 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                                <h1 className="text-3xl font-bold mb-8 flex items-center gap-3 text-black">
                                     <Package size={28} /> My Orders
                                 </h1>
                                 {/* ... existing orders code ... */}
@@ -321,7 +305,7 @@ export default function AccountPage() {
                                                 <div className="mt-4 text-sm text-gray-600">
                                                     {order.items?.slice(0, 2).map((p: any, i: number) => (
                                                        <p key={i}>{p.name} × {p.quantity}</p>
-                                                       )) || <p className="text-gray-400">No product details available</p>}
+                                                       )) || <p className="text-gray-400 text-black">No product details available</p>}
                                                 </div>
 
                                                 <Link href={`/product/${order._id}`} className="text-black hover:underline text-sm mt-4 inline-block">
