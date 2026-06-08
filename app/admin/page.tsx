@@ -177,7 +177,7 @@ export default function AdminPage() {
 
             <form onSubmit={handleSubmit} className="space-y-6 ">
               <div>
-                <label className="block text-sm font-medium mb-2 text-white">Product Name *</label>
+                <label className="block text-sm font-medium mb-2 text-black">Product Name *</label>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
               </div>
 
