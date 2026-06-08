@@ -64,7 +64,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-6">
       <div className="max-w-md w-full">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold">CanadaClothings</h1>
+          <h1 className="text-4xl font-bold text-black">CanadaClothings</h1>
           <p className="text-gray-600 mt-2">
             {isLogin ? "Sign in to your account" : "Create a new account"}
           </p>
@@ -98,7 +98,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {!isLogin && (
               <div>
-                <label className="block text-sm font-medium mb-2">Full Name</label>
+                <label className="block text-sm font-medium mb-2 text-black">Full Name</label>
                 <div className="relative">
                   <User className="absolute left-4 top-3.5 text-gray-400" size={20} />
                   <input
@@ -114,7 +114,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             )}
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email Address</label>
+              <label className="block text-sm font-medium mb-2 text-black">Email Address</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-3.5 text-gray-400" size={20} />
                 <input
@@ -130,7 +130,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Password</label>
+              <label className="block text-sm font-medium mb-2 text-black">Password</label>
               <div className="relative">
                 <Lock className="absolute left-4 top-3.5 text-gray-400" size={20} />
                 <input

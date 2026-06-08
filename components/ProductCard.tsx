@@ -53,7 +53,7 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
               <p className="text-sm text-gray-500 capitalize">
                 {product.gender} • {product.category}
               </p>
-              <h3 className="font-semibold text-lg mt-1 line-clamp-2 group-hover:text-black transition-colors">
+              <h3 className="font-semibold text-lg mt-1 line-clamp-2 text-black group-hover:text-black transition-colors">
                 {product.name}
               </h3>
             </div>
@@ -63,7 +63,7 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
           </div>
 
           <div className="flex items-baseline gap-2 mt-3">
-            <span className="text-2xl font-bold">CA${product.price}</span>
+            <span className="text-2xl font-bold text-black">CA${product.price}</span>
             {product.originalPrice && (
               <span className="text-sm text-gray-400 line-through">CA${product.originalPrice}</span>
             )}
@@ -81,7 +81,7 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
                       e.preventDefault();
                       setSelectedSize(size);
                     }}
-                    className={`text-sm border px-3 py-1.5 rounded-lg transition-all ${
+                    className={`text-sm border px-3 py-1.5 rounded-lg transition-all text-black ${
                       selectedSize === size
                         ? "border-black bg-black text-white"
                         : "border-gray-300 hover:border-gray-400"

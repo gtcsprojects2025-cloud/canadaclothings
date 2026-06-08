@@ -157,7 +157,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold flex items-center gap-3">
+          <h1 className="text-4xl font-bold flex items-center gap-3 text-black">
             Admin Dashboard
           </h1>
           <button
@@ -183,27 +183,27 @@ export default function AdminPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label>Price (CA$) *</label>
+                  <label className="text-black">Price (CA$) *</label>
                   <input type="number" name="price" value={formData.price} onChange={handleInputChange} required step="0.01" className="w-full px-4 py-3 border rounded-2xl" />
                 </div>
                 <div>
-                  <label>Original Price</label>
+                  <label className="text-black">Original Price</label>
                   <input type="number" name="originalPrice" value={formData.originalPrice} onChange={handleInputChange} step="0.01" className="w-full px-4 py-3 border rounded-2xl" />
                 </div>
               </div>
 
               <div>
-                <label>Image URL *</label>
+                <label className="text-black">Image URL *</label>
                 <input type="text" placeholder="https://picsum.photos/id/1015/600/800" name="image" value={formData.image} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label>Category *</label>
+                  <label className="text-black">Category *</label>
                   <input type="text" name="category" value={formData.category} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
                 </div>
                 <div>
-                  <label>Gender *</label>
+                  <label className="text-black">Gender *</label>
                   <select name="gender" value={formData.gender} onChange={handleInputChange} className="w-full px-4 py-3 border rounded-2xl">
                     <option value="female">Female</option>
                     <option value="male">Male</option>
@@ -213,8 +213,8 @@ export default function AdminPage() {
               </div>
 
               <div>
-                <label>Season</label>
-                <select name="season" value={formData.season} onChange={handleInputChange} className="w-full px-4 py-3 border rounded-2xl">
+                <label className="text-black">Season</label>
+                <select name="season" value={formData.season} onChange={handleInputChange} className="w-full px-4 py-3 border rounded-2xl text-black">
                   <option value="">No Season</option>
                   <option value="summer">Summer</option>
                   <option value="winter">Winter</option>
@@ -224,13 +224,13 @@ export default function AdminPage() {
               </div>
 
               <div>
-                <label>Description</label>
+                <label className="text-black">Description</label>
                 <textarea name="description" value={formData.description} onChange={handleInputChange} rows={4} className="w-full px-4 py-3 border rounded-2xl" />
               </div>
 
               {/* Sizes Management */}
               <div>
-                <label className="block text-sm font-medium mb-2">Sizes</label>
+                <label className="block text-sm font-medium mb-2 text-black">Sizes</label>
                 <div className="flex gap-3">
                   <input
                     type="text"
@@ -273,7 +273,7 @@ export default function AdminPage() {
 
           {/* Products List */}
           <div>
-            <h2 className="text-2xl font-semibold mb-6">All Products ({products.length})</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-black">All Products ({products.length})</h2>
 
             {loading ? (
               <p className="text-center py-10">Loading products...</p>
@@ -283,7 +283,7 @@ export default function AdminPage() {
                   <div key={product._id || product.id} className="bg-white p-6 rounded-3xl flex gap-6 items-center border">
                     <img src={product.image} alt={product.name} className="w-24 h-24 object-cover rounded-2xl" />
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg">{product.name}</h3>
+                      <h3 className="font-semibold text-lg text-black">{product.name}</h3>
                       <p className="text-sm text-gray-500">
                         {product.gender} • {product.category} • CA${product.price}
                       </p>

@@ -79,7 +79,7 @@ export default function ManagementDashboard() {
         {/* Header */}
         <div className="flex justify-between items-center mb-10">
           <div>
-            <h1 className="text-4xl font-bold">Management Dashboard</h1>
+            <h1 className="text-4xl font-bold text-black">Management Dashboard</h1>
             <p className="text-gray-600 mt-2">Welcome back, Admin</p>
           </div>
           <div className=" flex gap-5 ">
@@ -103,25 +103,25 @@ export default function ManagementDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <Link href="/admin" className="bg-white p-6 rounded-3xl hover:shadow-md transition group">
             <Package className="w-10 h-10 text-blue-600 mb-4" />
-            <h3 className="font-semibold text-lg">Products</h3>
+            <h3 className="font-semibold text-lg text-black">Products</h3>
             <p className="text-sm text-gray-500">Manage inventory</p>
           </Link>
 
           <Link href="/admin/orders" className="bg-white p-6 rounded-3xl hover:shadow-md transition group">
             <ShoppingBag className="w-10 h-10 text-green-600 mb-4" />
-            <h3 className="font-semibold text-lg">Orders</h3>
+            <h3 className="font-semibold text-lg text-black">Orders</h3>
             <p className="text-sm text-gray-500">Track & fulfill</p>
           </Link>
 
           <Link href="/admin/users" className="bg-white p-6 rounded-3xl hover:shadow-md transition group">
             <Users className="w-10 h-10 text-purple-600 mb-4" />
-            <h3 className="font-semibold text-lg">Users</h3>
+            <h3 className="font-semibold text-lg text-black">Users</h3>
             <p className="text-sm text-gray-500">Customer management</p>
           </Link>
 
           <Link href="/admin/dashboard" className="bg-black text-white p-6 rounded-3xl hover:shadow-md transition group">
             <TrendingUp className="w-10 h-10 mb-4" />
-            <h3 className="font-semibold text-lg">Analytics</h3>
+            <h3 className="font-semibold text-lg text-black">Analytics</h3>
             <p className="text-sm opacity-75">Business insights</p>
           </Link>
         </div>
@@ -132,7 +132,7 @@ export default function ManagementDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">Total Revenue</p>
-                <p className="text-3xl font-bold mt-2">CA${stats.totalRevenue.toFixed(2)}</p>
+                <p className="text-3xl font-bold mt-2 text-black">CA${stats.totalRevenue.toFixed(2)}</p>
               </div>
               <DollarSign className="w-10 h-10 text-green-600" />
             </div>
@@ -142,7 +142,7 @@ export default function ManagementDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">Total Orders</p>
-                <p className="text-3xl font-bold mt-2">{stats.totalOrders}</p>
+                <p className="text-3xl font-bold mt-2 text-black">{stats.totalOrders}</p>
               </div>
               <ShoppingBag className="w-10 h-10 text-blue-600" />
             </div>
@@ -152,7 +152,7 @@ export default function ManagementDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">Total Products</p>
-                <p className="text-3xl font-bold mt-2">{stats.totalProducts}</p>
+                <p className="text-3xl font-bold mt-2 text-black">{stats.totalProducts}</p>
               </div>
               <Package className="w-10 h-10 text-purple-600" />
             </div>
@@ -162,7 +162,7 @@ export default function ManagementDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">Active Users</p>
-                <p className="text-3xl font-bold mt-2">{stats.totalUsers}</p>
+                <p className="text-3xl font-bold mt-2 text-black">{stats.totalUsers}</p>
               </div>
               <UserCheck className="w-10 h-10 text-orange-600" />
             </div>
