@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { Package, Search, Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Package,  Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface OrderItem {
   name: string;

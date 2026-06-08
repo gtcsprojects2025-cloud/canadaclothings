@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { Users, Search, Eye, X, User } from "lucide-react";
+import { Users,  Eye, X, User } from "lucide-react";
 
 interface User {
   _id: string;

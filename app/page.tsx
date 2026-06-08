@@ -5,9 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/lib/data";
 import { ArrowRight, ShoppingBag } from "lucide-react";
-import Navbar from "@/components/NavBar";
 import { Product } from "@/lib/types";
 
 const heroSlides = [

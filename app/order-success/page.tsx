@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, ArrowRight, ShoppingBag, Home } from "lucide-react";
-import { toast } from "react-hot-toast";
+
 
 export default function OrderSuccessPage() {
   const searchParams = useSearchParams();

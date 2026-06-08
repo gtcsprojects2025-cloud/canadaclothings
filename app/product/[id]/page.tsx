@@ -11,19 +11,7 @@ import ProductCard from "@/components/ProductCard";
 import { toast } from "react-hot-toast";
 import { Product } from "@/lib/types";
 
-// interface Product {
-//   _id?: string;
-//   // id?: number;
-//   name: string;
-//   price: number;
-//   originalPrice?: number;
-//   image: string;
-//   category: string;
-//   gender: "male" | "female" | "unisex";
-//   season?: "summer" | "winter" | "spring" | "fall";
-//   description?: string;
-//   sizes?: string[];
-// }
+
 
 export default function ProductDetailPage() {
   const params = useParams();

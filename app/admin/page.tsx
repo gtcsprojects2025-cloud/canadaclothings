@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { Plus, Trash2, RefreshCw, Edit2 } from "lucide-react";
+import {  Trash2, RefreshCw, Edit2 } from "lucide-react";
 
 interface Product {
   _id?: string;
