@@ -170,14 +170,14 @@ export default function AdminPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
           {/* Add / Edit Product Form */}
-          <div className="bg-gray-100  rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold mb-6">
+          <div className="bg-white  rounded-3xl p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold mb-6 text-black">
               {editingProduct ? "Edit Product" : "Add New Product"}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6 ">
               <div>
-                <label className="block text-sm font-medium mb-2">Product Name *</label>
+                <label className="block text-sm font-medium mb-2 text-white">Product Name *</label>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
               </div>
 
