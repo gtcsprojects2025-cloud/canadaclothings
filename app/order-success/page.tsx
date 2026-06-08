@@ -6,6 +6,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, ArrowRight, ShoppingBag, Home } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 
 export default function OrderSuccessPage() {
   const searchParams = useSearchParams();
