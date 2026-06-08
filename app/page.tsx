@@ -151,7 +151,7 @@ console.log("Products in state:", products);
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-4xl font-bold">Featured Collections</h2>
+              <h2 className="text-4xl font-bold text-black">Featured Collections</h2>
               <p className="text-gray-600 mt-3">Handpicked premium pieces for every season</p>
             </div>
             <Link href="/shop" className="flex items-center gap-2 text-black hover:underline font-medium">
@@ -173,7 +173,7 @@ console.log("Products in state:", products);
       {/* Categories Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4">Shop by Category</h2>
+          <h2 className="text-4xl font-bold mb-4 text-black">Shop by Category</h2>
           <p className="text-gray-600 mb-12">Find the perfect style for everyone</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -198,7 +198,7 @@ console.log("Products in state:", products);
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-10 left-10 text-white">
                   <h3 className="text-4xl font-semibold capitalize">{gender}</h3>
-                  <p className="mt-2 opacity-90">Explore Collection →</p>
+                  <p className="mt-2 opacity-90 text-black">Explore Collection →</p>
                 </div>
               </Link>
             ))}
