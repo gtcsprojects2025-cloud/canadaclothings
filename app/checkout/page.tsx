@@ -7,8 +7,16 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { ArrowLeft, CreditCard, Truck } from "lucide-react";
 import { toast } from "react-hot-toast";
-import PaystackPop from '@paystack/inline-js';
+
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+
+// Dynamic import for Paystack (Client-side only)
+import dynamic from 'next/dynamic';
+
+const PaystackPop = dynamic(() => import('@paystack/inline-js'), { 
+  ssr: false 
+});
 
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart();
@@ -45,7 +53,16 @@ export default function CheckoutPage() {
 
     setIsProcessing(true);
 
-    const paystack = new PaystackPop();
+    // Ensure Paystack is loaded
+    if (typeof PaystackPop === 'undefined') {
+      toast.error("Payment system is still loading. Please try again.");
+      setIsProcessing(false);
+      return;
+    }
+
+    const paystack = new (PaystackPop as any)();
+
+   
     paystack.newTransaction({
       key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
       email: formData.email,
