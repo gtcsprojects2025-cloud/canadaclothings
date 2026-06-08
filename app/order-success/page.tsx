@@ -12,12 +12,27 @@ export default function OrderSuccessPage() {
   const router = useRouter();
   const [orderRef, setOrderRef] = useState<string>("");
 
+{/** corrected */}
+  
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const ref = searchParams.get("ref");
     if (ref) {
       setOrderRef(ref);
     }
   }, [searchParams]);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-xl">Loading order confirmation...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-6">
