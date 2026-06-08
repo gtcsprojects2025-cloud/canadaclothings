@@ -13,6 +13,23 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+
+  const handleAdminLogin = ()=>{
+
+    if(localStorage.getItem("adminLogin")){
+    window.location.href="/admin/dashboard"
+    }else{
+
+      setTimeout(()=>{
+      toast.error("Login as an Administrator");
+      window.location.href="/auth"
+
+      }, 1000)
+    
+      
+    }
+  }
+
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -42,13 +59,13 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gray-400 mt-1" />
                 <div>
-                  <p>123 Fashion Avenue, Downtown</p>
-                  <p>Toronto, Ontario M5V 2T6</p>
+                  <p>1001-1551 Lycee Place </p>
+                  <p>Ottawa, Ontario K1G4B5</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gray-400" />
-                <p>+1 (416) 555-0123</p>
+                <p>(+1)-613-416-3188</p>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gray-400" />
@@ -56,7 +73,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 {/* <Mail className="w-5 h-5 text-gray-400" /> */}
-                <button onClick={() => redirect("/admin/dashboard")} className="hover:text-white mt-2 cursor-pointer p-2 bg-red-600 rounded-xl transition">ADMIN LOGIN</button>
+                <button onClick={handleAdminLogin} className="hover:text-white mt-2 cursor-pointer p-2 bg-red-600 rounded-xl transition">ADMIN LOGIN</button>
               </div>
             </div>
           </div>

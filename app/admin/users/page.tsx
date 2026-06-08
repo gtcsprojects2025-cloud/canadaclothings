@@ -23,7 +23,12 @@ export default function UsersManagement() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetchUsers();
+    if(!localStorage.getItem("adminLogin")){
+      window.location.href="/auth"
+    }else{
+       fetchUsers();
+    }
+   
   }, []);
 
   const fetchUsers = async () => {

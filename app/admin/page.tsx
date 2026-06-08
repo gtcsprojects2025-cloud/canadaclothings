@@ -55,7 +55,12 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    fetchProducts();
+    if(!localStorage.getItem("adminLogin")){
+      window.location.href="/auth"
+    }else{
+      fetchProducts();
+    }
+    
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {

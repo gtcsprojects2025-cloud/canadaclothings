@@ -26,54 +26,7 @@ export default function AuthPage() {
   };
 
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
 
-  //   if (!formData.email || !formData.password) {
-  //     toast.error("Please fill all required fields");
-  //     return;
-  //   }
-
-  //   if (!isLogin && !formData.name) {
-  //     toast.error("Please enter your full name");
-  //     return;
-  //   }
-
-  //   // Simulate API call
-  //   // setTimeout(() => {
-  //   //   toast.success(isLogin 
-  //   //     ? "Login successful! Welcome back." 
-  //   //     : "Account created successfully!"
-  //   //   );
-      
-  //   //   // Redirect to account page after successful auth
-  //   //   router.push("/account");
-  //   // }, 800);
-
-  //   if(isLogin) {
-  //     // Simulate login API call
-  //     // In real app, replace with actual API request and handle response accordingly 
-  //   if(formData.email === "admin@example.com" && formData.password === "admin123") {
-  //     toast.success("Login successful! Welcome back.");
-  //     localStorage.setItem("user", JSON.stringify({ name: formData.name, email: formData.email }));
-  //     localStorage.setItem("isLoggedIn", "true");
-  //     window.location.href = "/account";
-  //     // router.push("/account");
-  //   } else {
-  //     toast.error("Invalid email or password.");
-  //   }
-  // }else {
-  //   // Simulate registration API call
-  //   // In real app, replace with actual API request and handle response accordingly 
-  //   toast.success("Account created successfully!");
-  //   localStorage.setItem("user", JSON.stringify({ name: formData.name, email: formData.email }));
-  //   localStorage.setItem("isLoggedIn", "true");
-  //   window.location.href = "/account";
-  //   // router.push("/account");
-  // };
-  // }
-
-  // In handleSubmit function:
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -89,12 +42,20 @@ const handleSubmit = async (e: React.FormEvent) => {
   });
 
   const data = await res.json();
+  console.log("login data.......", data)
 
   if (res.ok) {
     toast.success(isLogin ? "Login successful!" : "Account created successfully!");
+    if(formData.email==="juliusedicha@gmail.com"){
+      localStorage.setItem("adminLogin", "true")
+      window.location.href="/admin/dashboard"
+    }else{
+
       localStorage.setItem("user", JSON.stringify({ name: formData.name, email: formData.email }));
       localStorage.setItem("isLoggedIn", "true");
-    window.location.href = "/account";
+      window.location.href = "/account";
+    }
+
   } else {
     toast.error(data.error || "Authentication failed");
   }

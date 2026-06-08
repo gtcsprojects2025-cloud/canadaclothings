@@ -27,18 +27,33 @@ export default function ManagementDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchDashboardData();
+    if(!localStorage.getItem("adminLogin")){
+      window.location.href="/auth"
+    }else{
+      fetchDashboardData();
+    }
+    
   }, []);
+
+
+
+
+  const handleAdminLogout = ()=>{
+    localStorage.removeItem("adminLogin")
+    window.location.href="/auth"
+  }
 
   const fetchDashboardData = async () => {
     try {
-      const [productsRes, ordersRes] = await Promise.all([
+      const [productsRes, ordersRes, usersRes] = await Promise.all([
         fetch("/api/newProduct"),
-        fetch("/api/orders")
+        fetch("/api/orders"),
+        fetch("/api/users")
       ]);
 
       const products = await productsRes.json();
       const orders = await ordersRes.json();
+      const users = await usersRes.json()
 
       const revenue = orders.reduce((sum: number, order: any) => 
         sum + (order.totalAmount || order.total || 0), 0);
@@ -46,7 +61,7 @@ export default function ManagementDashboard() {
       setStats({
         totalProducts: products.length,
         totalOrders: orders.length,
-        totalUsers: 142,
+        totalUsers: users.length,
         totalRevenue: revenue,
       });
 
@@ -67,12 +82,21 @@ export default function ManagementDashboard() {
             <h1 className="text-4xl font-bold">Management Dashboard</h1>
             <p className="text-gray-600 mt-2">Welcome back, Admin</p>
           </div>
+          <div className=" flex gap-5 ">
           <button 
             onClick={fetchDashboardData}
             className="px-6 py-3 bg-black text-white rounded-2xl flex items-center gap-2 hover:bg-gray-800 transition"
           >
             Refresh Data
           </button>
+
+            <button 
+            onClick={handleAdminLogout}
+            className="px-6 py-3 bg-red-500 text-white rounded-2xl flex items-center gap-2 hover:bg-gray-800 transition"
+              >
+            Logout
+          </button>
+          </div>
         </div>
 
         {/* Navigation Menu */}

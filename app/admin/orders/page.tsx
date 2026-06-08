@@ -44,7 +44,12 @@ export default function OrdersManagement() {
   const [updatingStatus, setUpdatingStatus] = useState(false);
 
   useEffect(() => {
-    fetchOrders();
+    if(!localStorage.getItem("adminLogin")){
+      window.location.href="/auth"
+    }else{
+      fetchOrders();
+    }
+    
   }, []);
 
   const fetchOrders = async () => {
