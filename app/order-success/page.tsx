@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export default function OrderSuccessPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  
   const [orderRef, setOrderRef] = useState<string>("");
 
 {/** corrected */}
