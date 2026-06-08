@@ -67,7 +67,7 @@ export default function ShopPage() {
           <div className="sticky top-24">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold text-black">Filters</h2>
-              <Filter className="w-5 h-5" />
+              <Filter className="w-5 h-5 text-black" />
             </div>
 
             <div className="space-y-10">
@@ -91,7 +91,7 @@ export default function ShopPage() {
 
               {/* Categories */}
               <div>
-                <h3 className="uppercase text-xs tracking-widest font-medium mb-4">CATEGORIES</h3>
+                <h3 className="uppercase text-xs tracking-widest font-medium mb-4 text-black">CATEGORIES</h3>
                 <div className="space-y-3">
                   <label className="flex items-center gap-3 cursor-pointer">
                     <input
@@ -100,7 +100,7 @@ export default function ShopPage() {
                       onChange={() => setSelectedCategory('all')}
                       className="w-4 h-4 accent-black"
                     />
-                    <span>All Categories</span>
+                    <span className="text-black">All Categories</span>
                   </label>
                   {categories.map(cat => (
                     <label key={cat} className="flex items-center gap-3 cursor-pointer">

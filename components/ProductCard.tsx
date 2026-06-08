@@ -41,7 +41,7 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           {product.season && (
-            <div className="absolute top-3 left-3 bg-white/90 text-xs font-medium px-3 py-1 rounded-full">
+            <div className="absolute top-3 left-3 bg-white/90 text-xs font-medium px-3 py-1 rounded-full text-gray-500">
               {product.season.toUpperCase()}
             </div>
           )}
