@@ -62,7 +62,7 @@ export default function UsersManagement() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold flex items-center gap-3">
+          <h1 className="text-4xl font-bold flex items-center gap-3 text-black">
             <Users size={36} /> Users Management
           </h1>
           <button onClick={fetchUsers} className="px-6 py-3 bg-black text-white rounded-2xl">
@@ -77,7 +77,7 @@ export default function UsersManagement() {
             placeholder="Search users by name or email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-5 py-3 border border-gray-300 rounded-2xl"
+            className="w-full px-5 py-3 border border-gray-300 rounded-2xl text-gray-800"
           />
         </div>
 
@@ -86,11 +86,11 @@ export default function UsersManagement() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-8 py-5 text-left font-medium">User</th>
-                <th className="px-8 py-5 text-left font-medium">Email</th>
-                <th className="px-8 py-5 text-left font-medium">Role</th>
-                <th className="px-8 py-5 text-left font-medium">Joined</th>
-                <th className="px-8 py-5 text-center font-medium">Actions</th>
+                <th className="px-8 py-5 text-left font-medium text-black">User</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Email</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Role</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Joined</th>
+                <th className="px-8 py-5 text-center font-medium text-black">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -107,10 +107,10 @@ export default function UsersManagement() {
                         className="w-9 h-9 rounded-full object-cover"
                       /> */}
                       <User size={18} className="text-gray-400 w-6 h-6 rounded-full object-cover" />
-                      <span className="font-medium">{user.name}</span>
+                      <span className="font-medium text-gray-800">{user.name}</span>
                     </div>
                   </td>
-                  <td className="px-8 py-5 text-gray-600">{user.email}</td>
+                  <td className="px-8 py-5 text-black">{user.email}</td>
                   <td className="px-8 py-5">
                     <span className={`px-4 py-1 rounded-full text-sm ${
                       user.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-700'
@@ -143,7 +143,7 @@ export default function UsersManagement() {
             <div className="p-8">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold">User Details</h2>
+                  <h2 className="text-2xl font-bold text-black">User Details</h2>
                   <p className="text-gray-500">{selectedUser.email}</p>
                 </div>
                 <button onClick={closeModal} className="text-gray-400 hover:text-black">
@@ -163,36 +163,36 @@ export default function UsersManagement() {
               <div className="space-y-6">
                 <div>
                   <label className="text-sm text-gray-500">Full Name</label>
-                  <p className="text-xl font-medium">{selectedUser.name}</p>
+                  <p className="text-xl font-medium text-black">{selectedUser.name}</p>
                 </div>
 
                 <div>
                   <label className="text-sm text-gray-500">Email Address</label>
-                  <p className="text-lg">{selectedUser.email}</p>
+                  <p className="text-lg text-black">{selectedUser.email}</p>
                 </div>
 
                 {selectedUser.phone && (
                   <div>
                     <label className="text-sm text-gray-500">Phone Number</label>
-                    <p className="text-lg">{selectedUser.phone}</p>
+                    <p className="text-lg text-black">{selectedUser.phone}</p>
                   </div>
                 )}
 
                 {selectedUser.address && (
                   <div>
                     <label className="text-sm text-gray-500">Address</label>
-                    <p className="text-lg">{selectedUser.address}</p>
+                    <p className="text-lg text-black">{selectedUser.address}</p>
                   </div>
                 )}
 
                 <div>
                   <label className="text-sm text-gray-500">Role</label>
-                  <p className="text-lg capitalize">{selectedUser.role}</p>
+                  <p className="text-lg capitalize text-black">{selectedUser.role}</p>
                 </div>
 
                 <div>
                   <label className="text-sm text-gray-500">Member Since</label>
-                  <p className="text-lg">
+                  <p className="text-lg text-black">
                     {new Date(selectedUser.createdAt).toLocaleDateString('en-US', { 
                       year: 'numeric', 
                       month: 'long' 

@@ -154,7 +154,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white py-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-4xl font-bold flex items-center gap-3 text-black">
@@ -162,7 +162,7 @@ export default function AdminPage() {
           </h1>
           <button
             onClick={fetchProducts}
-            className="flex items-center gap-2 px-5 py-3 bg-white rounded-2xl border hover:bg-gray-50 transition"
+            className="flex items-center gap-2 px-5 py-3 bg-white text-gray-800 rounded-2xl border hover:bg-gray-50 transition"
           >
             <RefreshCw size={18} /> Refresh
           </button>
@@ -178,33 +178,33 @@ export default function AdminPage() {
             <form onSubmit={handleSubmit} className="space-y-6 ">
               <div>
                 <label className="block text-sm font-medium mb-2 text-black">Product Name *</label>
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="text-black">Price (CA$) *</label>
-                  <input type="number" name="price" value={formData.price} onChange={handleInputChange} required step="0.01" className="w-full px-4 py-3 border rounded-2xl" />
+                  <input type="number" name="price" value={formData.price} onChange={handleInputChange} required step="0.01" className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
                 </div>
                 <div>
                   <label className="text-black">Original Price</label>
-                  <input type="number" name="originalPrice" value={formData.originalPrice} onChange={handleInputChange} step="0.01" className="w-full px-4 py-3 border rounded-2xl" />
+                  <input type="number" name="originalPrice" value={formData.originalPrice} onChange={handleInputChange} step="0.01" className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
                 </div>
               </div>
 
               <div>
                 <label className="text-black">Image URL *</label>
-                <input type="text" placeholder="https://picsum.photos/id/1015/600/800" name="image" value={formData.image} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
+                <input type="text" placeholder="https://picsum.photos/id/1015/600/800" name="image" value={formData.image} onChange={handleInputChange} required className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="text-black">Category *</label>
-                  <input type="text" name="category" value={formData.category} onChange={handleInputChange} required className="w-full px-4 py-3 border rounded-2xl" />
+                  <input type="text" name="category" value={formData.category} onChange={handleInputChange} required className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
                 </div>
                 <div>
                   <label className="text-black">Gender *</label>
-                  <select name="gender" value={formData.gender} onChange={handleInputChange} className="w-full px-4 py-3 border rounded-2xl">
+                  <select name="gender" value={formData.gender} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800">
                     <option value="female">Female</option>
                     <option value="male">Male</option>
                     <option value="unisex">Unisex</option>
@@ -214,7 +214,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="text-black">Season</label>
-                <select name="season" value={formData.season} onChange={handleInputChange} className="w-full px-4 py-3 border rounded-2xl text-black">
+                <select name="season" value={formData.season} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-black">
                   <option value="">No Season</option>
                   <option value="summer">Summer</option>
                   <option value="winter">Winter</option>
@@ -225,7 +225,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="text-black">Description</label>
-                <textarea name="description" value={formData.description} onChange={handleInputChange} rows={4} className="w-full px-4 py-3 border rounded-2xl" />
+                <textarea name="description" value={formData.description} onChange={handleInputChange} rows={4} className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
               </div>
 
               {/* Sizes Management */}
@@ -237,14 +237,14 @@ export default function AdminPage() {
                     value={newSize}
                     onChange={(e) => setNewSize(e.target.value)}
                     placeholder="S, M, L..."
-                    className="flex-1 px-4 py-3 border rounded-2xl"
+                    className="flex-1 px-4 py-3 border border-gray-500 rounded-2xl text-gray-800"
                   />
                   <button type="button" onClick={addSize} className="px-6 bg-black text-white rounded-2xl">Add</button>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-4">
                   {formData.sizes.map((size) => (
-                    <div key={size} className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-2xl">
+                    <div key={size} className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-2xl text-gray-800">
                       {size}
                       <button type="button" onClick={() => removeSize(size)} className="text-red-500">
                         ✕
@@ -280,7 +280,7 @@ export default function AdminPage() {
             ) : (
               <div className="space-y-4 max-h-[750px] overflow-auto pr-4">
                 {products.map((product) => (
-                  <div key={product._id || product.id} className="bg-white p-6 rounded-3xl flex gap-6 items-center border">
+                  <div key={product._id || product.id} className="bg-white p-6 border-gray-500 rounded-3xl flex gap-6 items-center border">
                     <img src={product.image} alt={product.name} className="w-24 h-24 object-cover rounded-2xl" />
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg text-black">{product.name}</h3>
@@ -293,10 +293,10 @@ export default function AdminPage() {
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => editProduct(product)} className="p-3 hover:bg-gray-100 rounded-xl">
-                        <Edit2 size={20} />
+                        <Edit2 size={20} className="text-black" />
                       </button>
                       <button className="p-3 hover:bg-red-50 text-red-500 rounded-xl">
-                        <Trash2 size={20} />
+                        <Trash2 size={20} className=" text-red" />
                       </button>
                     </div>
                   </div>

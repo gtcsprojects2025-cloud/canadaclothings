@@ -183,13 +183,13 @@ export default function ManagementDashboard() {
               recentOrders.map((order) => (
                 <div key={order._id} className="flex items-center justify-between border-b pb-4 last:border-none">
                   <div>
-                    <p className="font-medium">{order.orderNumber}</p>
+                    <p className="font-medium text-black">{order.orderNumber}</p>
                     <p className="text-sm text-gray-500">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold">CA${order.totalAmount || order.total}</p>
+                    <p className="font-semibold text-black">CA${order.totalAmount || order.total}</p>
                     <span className={`text-xs px-3 py-1 rounded-full ${
                       order.status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
                     }`}>
@@ -199,7 +199,7 @@ export default function ManagementDashboard() {
                 </div>
               ))
             ) : (
-              <p className="text-gray-500 py-8 text-center">No recent orders found</p>
+              <p className="text-gray-500 py-8 text-center text-black">No recent orders found</p>
             )}
           </div>
         </div>

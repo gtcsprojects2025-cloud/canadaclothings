@@ -137,7 +137,7 @@ export default function AccountPage() {
 
                             <div>
                                 <h2 className="font-semibold text-xl text-black">{user.name}</h2>
-                                <p className="text-sm text-gray-500 text-black">{user.email}</p>
+                                <p className="text-sm text-gray-500 ">{user.email}</p>
                             </div>
                         </div>
 
@@ -337,20 +337,20 @@ export default function AccountPage() {
 
                                 {activeTab === "settings" && (
                                     <div>
-                                        <h1 className="text-3xl font-bold mb-8">Account Settings</h1>
+                                        <h1 className="text-3xl font-bold mb-8 text-black">Account Settings</h1>
                                         <div className="max-w-md space-y-8">
                                             <div>
-                                                <h3 className="font-medium mb-4">Email Notifications</h3>
+                                                <h3 className="font-medium mb-4 text-black">Email Notifications</h3>
                                                 <div className="space-y-4">
-                                                    <label className="flex items-center gap-3">
+                                                    <label className="flex items-center gap-3 text-black">
                                                         <input type="checkbox" defaultChecked className="w-5 h-5 accent-black" />
                                                         Order status updates
                                                     </label>
-                                                    <label className="flex items-center gap-3">
+                                                    <label className="flex items-center gap-3 text-black">
                                                         <input type="checkbox" defaultChecked className="w-5 h-5 accent-black" />
                                                         New arrivals & seasonal sales
                                                     </label>
-                                                    <label className="flex items-center gap-3">
+                                                    <label className="flex items-center gap-3 text-black">
                                                         <input type="checkbox" className="w-5 h-5 accent-black" />
                                                         Promotional offers
                                                     </label>

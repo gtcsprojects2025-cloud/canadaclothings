@@ -114,7 +114,7 @@ export default function OrdersManagement() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold flex items-center gap-3">
+          <h1 className="text-4xl font-bold flex items-center gap-3 text-black">
             <Package size={36} /> Orders Management
           </h1>
           <button onClick={fetchOrders} className="px-6 py-3 bg-black text-white rounded-2xl">
@@ -130,14 +130,14 @@ export default function OrdersManagement() {
               placeholder="Search by order number or customer..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-5 py-3 border border-gray-300 rounded-2xl"
+              className="w-full px-5 py-3 border border-gray-300 rounded-2xl text-gray-800"
             />
           </div>
           <div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full md:w-64 px-5 py-3 border border-gray-300 rounded-2xl"
+              className="w-full md:w-64 px-5 py-3 border border-gray-300 rounded-2xl text-black"
             >
               <option value="all">All Status</option>
               <option value="Processing">Processing</option>
@@ -153,12 +153,12 @@ export default function OrdersManagement() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-8 py-5 text-left font-medium">Order ID</th>
-                <th className="px-8 py-5 text-left font-medium">Customer</th>
-                <th className="px-8 py-5 text-left font-medium">Date</th>
-                <th className="px-8 py-5 text-left font-medium">Amount</th>
-                <th className="px-8 py-5 text-left font-medium">Status</th>
-                <th className="px-8 py-5 text-center font-medium">Actions</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Order ID</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Customer</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Date</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Amount</th>
+                <th className="px-8 py-5 text-left font-medium text-black">Status</th>
+                <th className="px-8 py-5 text-center font-medium text-black">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -167,12 +167,12 @@ export default function OrdersManagement() {
                   key={order._id} 
                   className={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
                 >
-                  <td className="px-8 py-5 font-mono text-sm">{order.orderNumber}</td>
-                  <td className="px-8 py-5">{order.shippingAddress?.fullName || "N/A"}</td>
+                  <td className="px-8 py-5 font-mono text-sm text-gray-800">{order.orderNumber}</td>
+                  <td className="px-8 py-5 text-gray-800">{order.shippingAddress?.fullName || "N/A"}</td>
                   <td className="px-8 py-5 text-sm text-gray-600">
                     {order.createdAt ? new Date(order.createdAt).toLocaleDateString() : "N/A"}
                   </td>
-                  <td className="px-8 py-5 font-semibold">
+                  <td className="px-8 py-5 font-semibold text-black">
                     CA${order.totalAmount || order.total || 0}
                   </td>
                   <td className="px-8 py-5">
@@ -229,7 +229,7 @@ export default function OrdersManagement() {
             <div className="p-8">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold">Order Details</h2>
+                  <h2 className="text-2xl font-bold text-black">Order Details</h2>
                   <p className="text-gray-500">{selectedOrder.orderNumber}</p>
                 </div>
                 <button onClick={closeModal} className="text-gray-400 hover:text-black">
@@ -261,8 +261,8 @@ export default function OrdersManagement() {
               {/* Rest of order details... */}
               {selectedOrder.shippingAddress && (
                 <div className="mb-8">
-                  <h3 className="font-semibold mb-3">Shipping Address</h3>
-                  <div className="bg-gray-50 p-5 rounded-2xl">
+                  <h3 className="font-semibold mb-3 text-black">Shipping Address</h3>
+                  <div className="bg-gray-50 p-5 rounded-2xl text-gray-800">
                     <p className="font-medium">{selectedOrder.shippingAddress.fullName}</p>
                     <p>{selectedOrder.shippingAddress.address}</p>
                     <p>{selectedOrder.shippingAddress.city}, {selectedOrder.shippingAddress.province} {selectedOrder.shippingAddress.postalCode}</p>
@@ -277,16 +277,16 @@ export default function OrdersManagement() {
                   {selectedOrder.items?.map((item, index) => (
                     <div key={index} className="flex justify-between border-b pb-3">
                       <div>
-                        <p className="font-medium">{item.name}</p>
+                        <p className="font-medium text-black">{item.name}</p>
                         <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                       </div>
-                      <p className="font-semibold">CA${(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="font-semibold text-black">CA${(item.price * item.quantity).toFixed(2)}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex justify-between items-center pt-6 border-t text-xl font-semibold mt-6">
+              <div className="flex justify-between items-center pt-6 border-t text-xl font-semibold mt-6 text-black">
                 <span>Total</span>
                 <span>CA${selectedOrder.totalAmount || selectedOrder.total}</span>
               </div>
