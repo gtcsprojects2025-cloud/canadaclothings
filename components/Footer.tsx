@@ -30,6 +30,17 @@ export default function Footer() {
     }
   }
 
+    const handleRouteChange = () => {
+    if(localStorage.getItem("isLoggedIn") === "true") {
+      // User is logged in, allow access to account page
+      redirect("/account");
+    } else {
+      // User is not logged in, redirect to auth page
+      redirect("/auth");
+      
+    }
+  };
+
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -95,10 +106,11 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-5">Support</h3>
             <ul className="space-y-3">
               <li><Link href="/contact" className="hover:text-white transition">Contact Us</Link></li>
-              <li><Link href="/shipping" className="hover:text-white transition">Shipping Policy</Link></li>
-              <li><Link href="/returns" className="hover:text-white transition">Returns & Exchanges</Link></li>
-              <li><Link href="/faq" className="hover:text-white transition">FAQs</Link></li>
-              <li><Link href="/track-order" className="hover:text-white transition">Track Your Order</Link></li>
+              <li><Link href="/shipping-policy" className="hover:text-white transition">Shipping Policy</Link></li>
+              <li><Link href="/refund-policy" className="hover:text-white transition">Refund Policy</Link></li>
+              <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li>
+              {/* <li><Link href="/track-order" className="hover:text-white transition">Track Your Order</Link></li> */}
+              <li><button onClick={handleRouteChange} className="hover:text-white transition cursor-pointer">Track Your Order</button></li>
             </ul>
           </div>
 
@@ -137,7 +149,7 @@ export default function Footer() {
               <h4 className="text-white font-medium mb-4">Follow Us</h4>
               <div className="flex gap-4">
                 <a href="#" className="hover:text-white transition"><FaFacebook size={24} /></a>
-                <a href="#" className="hover:text-white transition"><FaInstagram size={24} /></a>
+                <a href="https://instagram.com/canadaclothings" target="_blank" className="hover:text-white transition"><FaInstagram size={24} /></a>
                 <a href="#" className="hover:text-white transition"><FaLinkedin size={24} /></a>
                 <a href="#" className="hover:text-white transition"><FaYoutube size={24} /></a>
                 <a href="#" className="hover:text-white transition"><FaTiktok size={24} /></a>
@@ -152,9 +164,9 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} CanadaClothings. All Rights Reserved.</p>
           
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-gray-300 transition">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-gray-300 transition">Terms of Service</Link>
-            <Link href="/accessibility" className="hover:text-gray-300 transition">Accessibility</Link>
+            <Link href="/privacy-policy" className="hover:text-gray-300 transition">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-gray-300 transition">Terms of Service</Link>
+            {/* <Link href="/accessibility" className="hover:text-gray-300 transition">Accessibility</Link> */}
           </div>
 
           <p className="mt-4 md:mt-0">Powered By <a href="https://loplatforms.com" className="hover:text-gray-300 transition">LOPlatforms</a></p>
