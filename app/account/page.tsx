@@ -173,7 +173,7 @@ export default function AccountPage() {
                         ) : activeTab === "profile" ? (
                             <div>
                                 <div className="flex justify-between items-center mb-8">
-                                    <h1 className="text-3xl font-bold">My Profile</h1>
+                                    <h1 className="text-3xl font-bold text-black">My Profile</h1>
                                     {!isEditing && (
                                         <button
                                             onClick={() => setIsEditing(true)}
@@ -193,7 +193,7 @@ export default function AccountPage() {
                                                 name="name"
                                                 value={editForm.name}
                                                 onChange={handleEditChange}
-                                                className="w-full px-4 py-3 border rounded-2xl"
+                                                className="w-full px-4 py-3 border rounded-2xl text-gray-600"
                                             />
                                         </div>
                                         <div>
@@ -203,7 +203,7 @@ export default function AccountPage() {
                                                 name="email"
                                                 value={editForm.email}
                                                 onChange={handleEditChange}
-                                                className="w-full px-4 py-3 border rounded-2xl"
+                                                className="w-full px-4 py-3 border rounded-2xl text-gray-600"
                                             />
                                         </div>
                                         <div>
@@ -213,7 +213,7 @@ export default function AccountPage() {
                                                 name="phone"
                                                 value={editForm.phone}
                                                 onChange={handleEditChange}
-                                                className="w-full px-4 py-3 border rounded-2xl"
+                                                className="w-full px-4 py-3 border rounded-2xl text-gray-600"
                                             />
                                         </div>
                                         <div>
@@ -223,7 +223,7 @@ export default function AccountPage() {
                                                 value={editForm.address}
                                                 onChange={handleEditChange}
                                                 rows={3}
-                                                className="w-full px-4 py-3 border rounded-2xl"
+                                                className="w-full px-4 py-3 border rounded-2xl text-gray-600"
                                             />
                                         </div>
 
@@ -246,19 +246,19 @@ export default function AccountPage() {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div>
                                             <label className="text-sm text-gray-800 ">Full Name</label>
-                                            <p className="text-lg font-medium mt-1">{user.name}</p>
+                                            <p className="text-lg font-medium mt-1 text-gray-600">{user.name}</p>
                                         </div>
                                         <div>
                                             <label className="text-sm text-gray-800 ">Email Address</label>
-                                            <p className="text-lg font-medium mt-1">{user.email}</p>
+                                            <p className="text-lg font-medium mt-1 text-gray-600">{user.email}</p>
                                         </div>
                                         <div>
                                             <label className="text-sm text-gray-800 ">Phone Number</label>
-                                            <p className="text-lg font-medium mt-1">{user.phone}</p>
+                                            <p className="text-lg font-medium mt-1 text-gray-600">{user.phone}</p>
                                         </div>
                                         <div>
                                             <label className="text-sm text-gray-800 ">Member Since</label>
-                                            <p className="text-lg font-medium mt-1">{user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { 
+                                            <p className="text-lg font-medium mt-1 text-gray-600">{user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { 
                                                 month: 'long', 
                                                 year: 'numeric' 
                                             }) : "2026"}</p>

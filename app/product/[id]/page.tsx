@@ -116,7 +116,7 @@ export default function ProductDetailPage() {
                 {product.gender} • {product.category}
                 {product.season && <span>• {product.season}</span>}
               </div>
-              <h1 className="text-4xl font-bold leading-tight">{product.name}</h1>
+              <h1 className="text-4xl font-bold leading-tight text-black">{product.name}</h1>
             </div>
 
             <div className="flex items-center gap-4">
@@ -129,9 +129,9 @@ export default function ProductDetailPage() {
             </div>
 
             <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-bold">CA${product.price}</span>
+              <span className="text-4xl font-bold text-black">CA${product.price}</span>
               {product.originalPrice && (
-                <span className="text-xl text-gray-400 line-through">
+                <span className="text-xl text-gray-600 line-through">
                   CA${product.originalPrice}
                 </span>
               )}
@@ -144,13 +144,13 @@ export default function ProductDetailPage() {
             {/* Size Selector */}
             {product.sizes && product.sizes.length > 0 && (
               <div>
-                <p className="font-medium mb-3">Select Size</p>
+                <p className="font-medium mb-3 text-gray-600">Select Size</p>
                 <div className="flex flex-wrap gap-3">
                   {product.sizes[0].split(",").map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-3 border rounded-2xl text-sm font-medium transition-all ${
+                      className={`px-6 py-3 border text-black rounded-2xl text-sm font-medium transition-all ${
                         selectedSize === size
                           ? "bg-black text-white border-black"
                           : "border-gray-300 hover:border-gray-400"
@@ -165,7 +165,7 @@ export default function ProductDetailPage() {
 
             {/* Quantity */}
             <div>
-              <p className="font-medium mb-3">Quantity</p>
+              <p className="font-medium mb-3 text-black">Quantity</p>
               <div className="flex items-center gap-4 w-fit border rounded-2xl px-4 py-2">
                 <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-2xl hover:bg-gray-100 w-8">-</button>
                 <span className="font-semibold w-8 text-center">{quantity}</span>
@@ -187,7 +187,7 @@ export default function ProductDetailPage() {
         {/* Related Products */}
          {relatedProducts.length > 0 && (
           <div className="mt-20">
-            <h2 className="text-3xl font-bold mb-8">You May Also Like</h2>
+            <h2 className="text-3xl font-bold mb-8 text-black">You May Also Like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {relatedProducts.map((related, i) => (
                 <ProductCard key={i} product={related} />
