@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
           >
             <Scale className="w-20 h-20 mx-auto mb-6 text-white/80" />
             <h1 className="text-6xl font-bold mb-6 text-white">Terms of Service</h1>
-            <p className="text-xl text-gray-400">Last Updated: April 1, 2023</p>
+            <p className="text-xl text-gray-400">Last Updated: June, 2026</p>
           </motion.div>
         </div>
       </div>
