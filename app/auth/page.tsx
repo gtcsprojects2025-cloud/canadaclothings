@@ -154,7 +154,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
             {isLogin && (
               <div className="flex justify-end">
-                <Link href="#" className="text-sm text-black hover:underline">
+                <Link href="/forgot-password" className="text-sm text-black hover:underline">
                   Forgot Password?
                 </Link>
               </div>
