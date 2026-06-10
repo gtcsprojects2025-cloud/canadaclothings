@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import {  Trash2, RefreshCw, Edit2 } from "lucide-react";
+import {  Trash2, RefreshCw, Edit2, Upload } from "lucide-react";
 
 interface Product {
   _id?: string;
@@ -24,6 +24,7 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   // Form State (All fields from Product type)
   const [formData, setFormData] = useState({
@@ -138,6 +139,49 @@ export default function AdminPage() {
     }
   };
 
+    // Cloudinary Image Upload
+   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  setUploadingImage(true);
+
+  const formDataUpload = new FormData();
+  formDataUpload.append("file", file);
+  formDataUpload.append("upload_preset", "canadaclothings"); // Must match your preset name
+
+  try {
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+    if (!cloudName) {
+      throw new Error("Cloudinary Cloud Name is missing in .env.local");
+    }
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      {
+        method: "POST",
+        body: formDataUpload,
+      }
+    );
+
+    const data = await res.json();
+
+    if (data.secure_url) {
+      setFormData(prev => ({ ...prev, image: data.secure_url }));
+      toast.success("Image uploaded successfully!");
+    } else {
+      throw new Error(data.error?.message || "Upload failed");
+    }
+  } catch (error: any) {
+    console.error("Cloudinary Upload Error:", error);
+    toast.error(error.message || "Failed to upload image. Check console.");
+  } finally {
+    setUploadingImage(false);
+  }
+};
+
+
   const editProduct = (product: Product) => {
     setEditingProduct(product);
     setFormData({
@@ -176,6 +220,34 @@ export default function AdminPage() {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6 ">
+
+            {/* Image Upload */}
+              <div>
+                <label className="block text-sm font-medium mb-2">Product Image</label>
+                <div className="flex gap-4">
+                  <label className="flex-1 cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-2xl p-6 text-center hover:border-gray-400 transition">
+                      <Upload className="mx-auto mb-2 text-gray-400" size={32} />
+                      <p className="text-sm text-gray-500">Click to upload image</p>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                      disabled={uploadingImage}
+                    />
+                  </label>
+
+                  {formData.image && (
+                    <div className="w-24 h-24 border rounded-2xl overflow-hidden">
+                      <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
+                {uploadingImage && <p className="text-sm text-blue-600 mt-2">Uploading to Cloudinary...</p>}
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-2 text-black">Product Name *</label>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
@@ -193,7 +265,7 @@ export default function AdminPage() {
               </div>
 
               <div>
-                <label className="text-black">Image URL *</label>
+                <label className="text-black">Image URL (Auto-filled) *</label>
                 <input type="text" placeholder="https://picsum.photos/id/1015/600/800" name="image" value={formData.image} onChange={handleInputChange} required className="w-full px-4 py-3 border border-gray-500 rounded-2xl text-gray-800" />
               </div>
 
