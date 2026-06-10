@@ -68,14 +68,14 @@ export default function ResetPasswordContent() {
       <div className="max-w-md w-full">
         <div className="text-center mb-10">
           <Lock className="w-16 h-16 mx-auto mb-6 text-black" />
-          <h1 className="text-4xl font-bold mb-3">Reset Password</h1>
+          <h1 className="text-4xl font-bold mb-3 text-black">Reset Password</h1>
           <p className="text-gray-600">Create a new password for your account</p>
         </div>
 
         <div className="bg-white rounded-3xl shadow-sm p-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2">New Password</label>
+              <label className="block text-sm font-medium mb-2 text-black">New Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -83,7 +83,7 @@ export default function ResetPasswordContent() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   minLength={6}
-                  className="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-black"
+                  className="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-black text-gray-600"
                   placeholder="••••••••"
                 />
                 <button
@@ -97,14 +97,14 @@ export default function ResetPasswordContent() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Confirm New Password</label>
+              <label className="block text-sm font-medium mb-2 text-black">Confirm New Password</label>
               <input
                 type={showPassword ? "text" : "password"}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-black"
+                className="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-black text-gray-600"
                 placeholder="••••••••"
               />
             </div>

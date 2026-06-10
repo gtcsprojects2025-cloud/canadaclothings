@@ -4,8 +4,11 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { redirect, useRouter } from "next/navigation";
 
 export default function ContactPage() {
+
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +37,10 @@ export default function ContactPage() {
 
       if (res.ok) {
         toast.success(data.message || "Message sent successfully!");
+        
         setFormData({ name: "", email: "", subject: "", message: "" });
+        
+        router.push('/contact-success')
       } else {
         toast.error(data.error || "Failed to send message");
       }

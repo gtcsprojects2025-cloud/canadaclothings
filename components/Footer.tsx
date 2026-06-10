@@ -148,12 +148,12 @@ export default function Footer() {
             <div className="mt-10">
               <h4 className="text-white font-medium mb-4">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-white transition"><FaFacebook size={24} /></a>
+                {/* <a href="#" className="hover:text-white transition"><FaFacebook size={24} /></a> */}
                 <a href="https://instagram.com/canadaclothings" target="_blank" className="hover:text-white transition"><FaInstagram size={24} /></a>
-                <a href="#" className="hover:text-white transition"><FaLinkedin size={24} /></a>
-                <a href="#" className="hover:text-white transition"><FaYoutube size={24} /></a>
-                <a href="#" className="hover:text-white transition"><FaTiktok size={24} /></a>
-                <a href="#" className="hover:text-white transition"><FaXTwitter size={24} /></a>
+                {/* <a href="#" className="hover:text-white transition"><FaLinkedin size={24} /></a> */}
+                {/* <a href="#" className="hover:text-white transition"><FaYoutube size={24} /></a> */}
+                {/* <a href="#" className="hover:text-white transition"><FaTiktok size={24} /></a> */}
+                {/* <a href="#" className="hover:text-white transition"><FaXTwitter size={24} /></a> */}
               </div>
             </div>
           </div>
