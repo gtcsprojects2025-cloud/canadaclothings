@@ -103,7 +103,7 @@ export default function ProductDetailPage() {
                 src={product.image||"/placeholder.png"}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
