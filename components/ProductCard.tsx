@@ -16,6 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
 const [sortedSizes, setSortedSizes] = useState<string[]>([]);
+const [adding, setAdding] = useState(false)
   const availableSizes = product.sizes || [];
   useEffect(() => {
     if (availableSizes.length > 0) {
@@ -25,9 +26,13 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
   }, [product.sizes]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
+    setAdding(true)
     e.preventDefault(); // Prevent navigation when clicking button
     const sizeToUse = selectedSize || (availableSizes.length > 0 ? availableSizes[0] : undefined);
     addToCart(product, sizeToUse);
+    setTimeout(()=>{
+      setAdding(false)
+    }, 3000)
   };
 
   return (
@@ -96,10 +101,15 @@ const [sortedSizes, setSortedSizes] = useState<string[]>([]);
 
           <button
             onClick={handleAddToCart}
-            className="mt-6 w-full bg-black hover:bg-gray-900 text-white py-3.5 rounded-xl flex items-center justify-center gap-2 font-medium transition-all active:scale-95"
+            disabled={adding}
+            className={`mt-6 w-full ${
+              adding 
+                ? "bg-gray-600" 
+                : "bg-black hover:bg-gray-900"
+            } text-white py-3.5 rounded-xl flex items-center justify-center gap-2 font-medium transition-all active:scale-95 disabled:opacity-70`}
           >
             <ShoppingCart size={18} />
-            Add to Cart
+            {adding?'Processing':'Add to Cart'}
           </button>
         </div>
       </div>
