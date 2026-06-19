@@ -50,7 +50,7 @@ export default function OrdersManagement() {
       fetchOrders();
     }
     
-  }, []);
+  }, [orders]);
 
   const fetchOrders = async () => {
     try {

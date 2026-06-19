@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
-    const orders = await Order.find({ user: decoded.userId })
+    const orders = await Order.find({ })
       .sort({ createdAt: -1 })
       .populate('items.product', 'name image'); // Optional: populate product details
 

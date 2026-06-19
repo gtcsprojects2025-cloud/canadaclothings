@@ -21,7 +21,7 @@ const PaystackPop = dynamic(() => import('@paystack/inline-js'), {
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<"paystack" | "paypal">("paystack");
+  const [paymentMethod, setPaymentMethod] = useState<"paystack" | "stripe">("stripe");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -131,6 +131,79 @@ onSuccess: async (transaction: any) => {
     );
   }
 
+
+
+  // Add this function
+const handleStripePayment = async () => {
+  if (!formData.email || !formData.firstName) {
+    toast.error("Please fill in your name and email");
+    return;
+  }
+
+  setIsProcessing(true);
+
+  try {
+    const res = await fetch("/api/stripe/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        items: cart,
+        customerInfo: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+        },
+      }),
+    });
+
+    const { url, onSuccess } = await res.json();
+    toast.success('okay', onSuccess)
+     
+    if(onSuccess===true){
+
+// Step 1: Create Order in Database First
+    const orderRes = await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        items: cart.map(item => ({
+          product: item._id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        total: total,
+        shippingAddress: {
+          fullName: `${formData.firstName} ${formData.lastName}`,
+          address: formData.address,
+          city: formData.city,
+          province: formData.province,
+          postalCode: formData.postalCode,
+          phone: formData.phone,
+        },
+        paymentMethod: "stripe",
+      }),
+    });
+
+    const orderData = await orderRes.json();
+    window.location.href = url;
+
+    if (!orderRes.ok) {
+      throw new Error(orderData.error || "Failed to create order");
+    }
+    if (url) {
+      window.location.href = url;
+    }
+
+    }
+ 
+  } catch (error) {
+    toast.error("Payment failed. Please try again.");
+  } finally {
+    setIsProcessing(false);
+  }
+};
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -216,7 +289,7 @@ onSuccess: async (transaction: any) => {
                 </h2>
 
                 <div className="flex gap-4 mb-8">
-                  <button
+                  {/* <button
                     type="button"
                     onClick={() => setPaymentMethod("paystack")}
                     className={`flex-1 py-4 border-2 rounded-2xl font-medium transition-all ${
@@ -224,16 +297,17 @@ onSuccess: async (transaction: any) => {
                     }`}
                   >
                     Paystack (Card)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("paypal")}
-                    className={`flex-1 py-4 border-2 rounded-2xl font-medium transition-all ${
-                      paymentMethod === "paypal" ? "border-black bg-gray-50" : "border-gray-300"
-                    }`}
-                  >
-                    PayPal
-                  </button>
+                  </button> */}
+               
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("stripe")}
+                  className={`flex-1 py-4 border-2 rounded-2xl font-medium transition-all ${
+                    paymentMethod === "stripe" ? "border-black bg-gray-50" : "border-gray-300"
+                  }`}
+                >
+                  Stripe (Card)
+                </button>
                 </div>
 
                 {/* Paystack */}
@@ -248,32 +322,19 @@ onSuccess: async (transaction: any) => {
                 )}
 
                 {/* PayPal */}
-                {paymentMethod === "paypal" && (
+                {paymentMethod === "stripe" && (
                   <div className="pt-4">
-                    <PayPalScriptProvider options={{
-                      clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "YOUR_PAYPAL_CLIENT_ID",
-                      currency: "CAD",
-                    }}>
-                      <PayPalButtons
-                        style={{ layout: "vertical" }}
-                        createOrder={(_:any, actions:any) => {
-                          return actions.order.create({
-                            intent: "CAPTURE",
-                            purchase_units: [{
-                              amount: {
-                                currency_code: "CAD",
-                                value: total.toFixed(2),
-                              },
-                            }],
-                          });
-                        }}
-                        onApprove={handlePayPalApprove}
-                        onError={(err:any) => {
-                          toast.error("Payment failed. Please try again.");
-                          console.error(err);
-                        }}
-                      />
-                    </PayPalScriptProvider>
+                        {paymentMethod === "stripe" && (
+                          <button
+                            onClick={handleStripePayment}
+                            disabled={isProcessing}
+                            className="w-full bg-black text-white py-5 rounded-2xl font-semibold text-lg hover:bg-gray-900 disabled:opacity-70"
+                          >
+                            {isProcessing ? "Redirecting to Stripe..." : `Pay CA$${total.toFixed(2)} with Stripe`}
+                          </button>
+                        )}
+  
+                  
                   </div>
                 )}
               </div>

@@ -29,7 +29,7 @@ const OrderSchema = new mongoose.Schema({
   },
   paymentMethod: { 
     type: String, 
-    enum: ["paystack", "paypal"], 
+    enum: ["paystack", "paypal", "stripe"], 
     required: true 
   },
   paymentReference: String,

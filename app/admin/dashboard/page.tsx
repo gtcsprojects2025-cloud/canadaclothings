@@ -180,7 +180,7 @@ export default function ManagementDashboard() {
 
           <div className="space-y-4">
             {recentOrders.length > 0 ? (
-              recentOrders.map((order) => (
+              recentOrders.slice(0,15).map((order) => (
                 <div key={order._id} className="flex items-center justify-between border-b pb-4 last:border-none">
                   <div>
                     <p className="font-medium text-black">{order.orderNumber}</p>
