@@ -46,7 +46,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   if (res.ok) {
     toast.success(isLogin ? "Login successful!" : "Account created successfully!");
-    if(formData.email==="juliusedicha@gmail.com" || formData.email==="tpopoola188@gmail.com"){
+    if(data.user.role === 'admin'){
       localStorage.setItem("adminLogin", "true")
       window.location.href="/admin/dashboard"
     }else{
