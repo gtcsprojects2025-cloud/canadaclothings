@@ -252,7 +252,7 @@ NEXT_PUBLIC_BASE_URL=https://canadaclothings.vercel.app || localhost:3000
 
 **MongoDB Atlas** (cloud-hosted NoSQL document database). Connection URI:
 ```
-mongodb+srv://gtcsprojects2025_db_user:TA0xIxQ2immH4jNj@cluster0.xedc4fq.mongodb.net/GTCS_account?retryWrites=true&w=majority&appName=Cluster0
+
 ```
 
 - Database Name: `GTCS_account` (from the URI path)
